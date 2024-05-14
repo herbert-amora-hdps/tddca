@@ -15,7 +15,7 @@ void main() {
     getMovieDetailsUseCase = GetMovieDetailsUseCase(mockMovieRepository);
   });
 
-  //to test if the usecase gets the detail from the repository or not
+  // to test if the usecase gets the detail from the repository or not
   // the data doesnt matter since this is a mock data to be passed through the usecase
   const testMovie = MovieEntity(
     title: "The Avengers",
@@ -30,7 +30,7 @@ void main() {
   const testMovieName = 'Avengers Endgame';
 
   test(
-    'should get movie details from the Movierepository',
+    'should get movie details from the movie repository',
     () async {
       // arrange
       when(mockMovieRepository.getMovieDetails(testMovieName))
