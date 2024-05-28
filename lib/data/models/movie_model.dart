@@ -9,6 +9,7 @@ class MovieModel extends MovieEntity {
     required String runtime,
     required String genre,
     required String director,
+    required String poster,
   }) : super(
           title: title,
           year: year,
@@ -17,6 +18,7 @@ class MovieModel extends MovieEntity {
           runtime: runtime,
           genre: genre,
           director: director,
+          poster: poster,
         );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
@@ -27,6 +29,7 @@ class MovieModel extends MovieEntity {
         runtime: json['Runtime'],
         genre: json['Genre'],
         director: json['Director'],
+        poster: json['Poster'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +40,7 @@ class MovieModel extends MovieEntity {
         'Runtime': runtime,
         'Genre': genre,
         'Director': director,
+        'Poster': poster,
       };
 
   MovieEntity toEntity() => MovieEntity(
@@ -47,5 +51,6 @@ class MovieModel extends MovieEntity {
         runtime: runtime,
         genre: genre,
         director: director,
+        poster: poster,
       );
 }

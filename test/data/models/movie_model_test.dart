@@ -13,6 +13,8 @@ const testMovieModel = MovieModel(
   runtime: "143 min",
   genre: "Action, Sci-Fi",
   director: "Joss Whedon",
+  poster:
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
 );
 
 void main() {
@@ -61,6 +63,8 @@ void main() {
         'Runtime': "143 min",
         'Genre': "Action, Sci-Fi",
         'Director': "Joss Whedon",
+        'Poster':
+            "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
       };
 
       // act

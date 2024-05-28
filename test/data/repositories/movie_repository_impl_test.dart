@@ -27,6 +27,8 @@ void main() {
     runtime: "143 min",
     genre: "Action, Sci-Fi",
     director: "Joss Whedon",
+    poster:
+        "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   );
 
   const testMovieEntity = MovieEntity(
@@ -37,6 +39,8 @@ void main() {
     runtime: "143 min",
     genre: "Action, Sci-Fi",
     director: "Joss Whedon",
+    poster:
+        "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
   );
 
   const testMovieName = 'Avengers';

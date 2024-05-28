@@ -9,6 +9,7 @@ class MovieEntity extends Equatable {
     required this.runtime,
     required this.genre,
     required this.director,
+    required this.poster,
   });
 
   final String title;
@@ -18,6 +19,7 @@ class MovieEntity extends Equatable {
   final String runtime;
   final String genre;
   final String director;
+  final String poster;
 
   /// for comparing
   @override
@@ -29,5 +31,6 @@ class MovieEntity extends Equatable {
         runtime,
         genre,
         director,
+        poster,
       ];
 }
