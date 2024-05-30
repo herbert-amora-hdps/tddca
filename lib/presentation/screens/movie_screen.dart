@@ -105,12 +105,15 @@ class MovieScreen extends StatelessWidget {
                     ],
                   );
                 }
-                if (state is MovieLoadFailure) {
+                if (state is MovieLoadFailed) {
                   return Center(
-                    child: Text(state.message),
+                    child: Text(
+                      key: const Key('failure_text'),
+                      state.message,
+                    ),
                   );
                 }
-                return Container();
+                return const SizedBox.shrink();
               },
             )
           ],

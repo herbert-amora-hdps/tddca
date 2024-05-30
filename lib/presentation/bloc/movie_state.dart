@@ -21,10 +21,10 @@ class MovieLoaded extends MovieState {
   List<Object?> get props => [result];
 }
 
-class MovieLoadFailure extends MovieState {
+class MovieLoadFailed extends MovieState {
   final String message;
 
-  const MovieLoadFailure(this.message);
+  const MovieLoadFailed(this.message);
 
   @override
   List<Object?> get props => [message];

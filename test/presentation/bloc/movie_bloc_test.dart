@@ -33,32 +33,47 @@ void main() {
 
   const testMovieName = 'Avengers';
 
+  const event = OnMovieChanged(testMovieName);
+
   test('initial state should be empty', () {
     expect(movieBloc.state, MovieEmpty());
+    expect(movieBloc.state.props, []);
   });
 
   blocTest<MovieBloc, MovieState>(
-      'should emit [MovieLoading, MovieLoaded] when data is gotten successfully',
-      build: () {
-        when(mockGetMovieDetailsUseCase.execute(testMovieName))
-            .thenAnswer((_) async => const Right(testMovieEntity));
-        return movieBloc;
-      },
-      act: (bloc) => bloc.add(const OnMovieChanged(testMovieName)),
-      wait: const Duration(milliseconds: 500),
-      expect: () => [MovieLoading(), const MovieLoaded(testMovieEntity)]);
+    'should emit [MovieLoading, MovieLoaded] when getting the movie entity data was successful ',
+    //arrange
+    build: () {
+      when(mockGetMovieDetailsUseCase.execute(testMovieName))
+          .thenAnswer((_) async => const Right(testMovieEntity));
+      return movieBloc;
+    },
+    act: (bloc) => bloc.add(event),
+    // we will add a duration because we have to simulate and wait for the async operations
+    // within the bloc under test such as debounceTime
+    wait: const Duration(milliseconds: 500),
+    //assert
+    expect: () => [
+      MovieLoading(),
+      const MovieLoaded(testMovieEntity),
+    ],
+    verify: (_) {
+      expect(event.props, [testMovieName]);
+    },
+  );
 
   blocTest<MovieBloc, MovieState>(
-      'should emit [MovieLoading, MovieLoadFailure] when get data is unsuccessful',
-      build: () {
-        when(mockGetMovieDetailsUseCase.execute(testMovieName)).thenAnswer(
-            (_) async => const Left(ServerFailure('Server failure')));
-        return movieBloc;
-      },
-      act: (bloc) => bloc.add(const OnMovieChanged(testMovieName)),
-      wait: const Duration(milliseconds: 500),
-      expect: () => [
-            MovieLoading(),
-            const MovieLoadFailure('Server failure'),
-          ]);
+    'should emit [MovieLoading, MovieLoadFailed] when getting the movie entity data was unsuccessful',
+    build: () {
+      when(mockGetMovieDetailsUseCase.execute(testMovieName))
+          .thenAnswer((_) async => const Left(ServerFailure('Server failure')));
+      return movieBloc;
+    },
+    act: (bloc) => bloc.add(event),
+    wait: const Duration(milliseconds: 500),
+    expect: () => [
+      MovieLoading(),
+      const MovieLoadFailed('Server failure'),
+    ],
+  );
 }
